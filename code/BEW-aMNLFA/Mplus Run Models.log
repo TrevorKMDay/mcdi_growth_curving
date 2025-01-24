@@ -1,0 +1,29 @@
+------Begin Mplus Model Run: 03Feb2023 16:26:51------
+Run options:
+	Recursive (run models in subdirectories): FALSE
+	Show output on console: FALSE
+	Replace existing outfile: always
+------
+Currently running model: meanimpactscript.inp
+Currently running model: measinvarscript_L_ACTION.inp
+Currently running model: measinvarscript_L_ANIMAL.inp
+Currently running model: measinvarscript_L_BODYP.inp
+Currently running model: measinvarscript_L_CLOTH.inp
+Currently running model: measinvarscript_L_DESCW.inp
+Currently running model: measinvarscript_L_FOODD.inp
+Currently running model: measinvarscript_L_FURNIT.inp
+Currently running model: measinvarscript_L_GAMESR.inp
+Currently running model: measinvarscript_L_HOUSEH.inp
+Currently running model: measinvarscript_L_LOCATE.inp
+Currently running model: measinvarscript_L_PEOPLE.inp
+Currently running model: measinvarscript_L_SOUNDS.inp
+Currently running model: measinvarscript_L_TOYS.inp
+Currently running model: measinvarscript_L_VEHICL.inp
+Currently running model: measinvarscript_S_CONCTW.inp
+Currently running model: measinvarscript_S_HELPV.inp
+Currently running model: measinvarscript_S_PRON.inp
+Currently running model: measinvarscript_S_QUANT.inp
+Currently running model: measinvarscript_S_QWORDS.inp
+Currently running model: varimpactscript.inp
+
+------End Mplus Model Run: 03Feb2023 21:43:18------

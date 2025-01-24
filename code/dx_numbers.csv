@@ -1,0 +1,10 @@
+dx_status,n,insufficient,backup,good
+Dx+,3,NA,NA,10
+Dx+,4,NA,1,9
+Dx+,5,NA,NA,42
+Dx-,3,NA,NA,17
+Dx-,4,NA,1,50
+Dx-,5,NA,1,184
+Dx0,3,6,5,42
+Dx0,4,5,2,40
+Dx0,5,NA,1,80

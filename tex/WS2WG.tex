@@ -1,0 +1,157 @@
+\documentclass[letterpaper]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage{microtype}
+\usepackage{libertine}
+
+\catcode`\_=12
+
+\usepackage{glossaries}
+\usepackage{siunitx}
+\usepackage{authblk}
+
+\usepackage{booktabs}
+
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+
+\captionsetup{font={small},labelfont=bf}
+
+% last
+\usepackage[colorlinks=true]{hyperref}
+
+\title{Prediction of CDI Words \& Sentences values from Words \& Gestures}
+
+\author{Trevor K.\,M. Day}
+%\author[1,2]{Trevor K.\,M. Day\thanks{\url{day00096@umn.edu}}}
+%\affil[1]{Institute of Child Development, University of Minnesota}
+%\affil[2]{Masonic Institute of the Developing Brain, University of Minnesota}
+
+\newacronym{cdi}{CDI}{Communicative Development Inventory}
+\newacronym{ws}{WS}{Words \& Sentences}
+\newacronym{wg}{WG}{Words \& Gestures}
+
+\newcommand{\sounds}{\textit{Sound Effects and Animal Sounds}}
+\newcommand{\cwords}{\textit{Connecting Words}}
+\newcommand{\hverbs}{\textit{Helping Verbs}}
+\newcommand{\food}{\textit{Food and Drinks}}
+
+\begin{document}
+
+    \maketitle
+
+    \section{Introduction}
+
+    The Baby Connectome Project (BCP) % CITE
+    collected MacArthur-Bates \glspl{cdi} % CITE
+    beyond the typical normed range of
+    8--18 months. This means it is unclear how to interpret scores beyond this
+    range.
+
+    \section{Methods}
+
+    I acquired CDI \gls{ws} data from Wordbank % CITE
+    (Feb. 15. 2023), comprising $n=7905$ unique individuals with an age field
+    between 16--30 months.
+    The Wordbank data were divided into a training set (75\% of the data at each
+    age) and a testing set (the remaining 25\%).
+
+    All \gls{wg} items appear on \gls{ws}, with the exception of ``in'' and
+    ``inside,'' which is two items on the \gls{wg} form and one on \gls{ws}. For
+    the \gls{wg} score, an endorsement of the ``inside/in'' item was scored as
+    two \textit{words produced}. 
+    
+    
+
+    Within each category, I regressed the difference against age (in months
+    since 18 months, the youngest age that \gls{ws} is normed for) and the
+    calculated \gls{wg} score, and the interaction between them.
+    
+        For each participant's inventory score (e.g. \sounds{}, \textit{Animals},
+    $\ldots$), I calculated the total number
+    of items endorsed, and the total number of items endorsed, counting only those that also
+    appear on the \gls{wg} form, see \autoref{fig:allWGWS}.
+    The lowest $R^2$ of the quadratic regression of \gls{ws} on \gls{wg}
+    was \hverbs{} at 0.694, but the rest exceeded 0.890.
+    
+    \begin{figure}
+    	\centering
+    	\includegraphics[width=\textwidth]{../MCDI-analysis/code/Wordbank/all_WSagainstWG}
+    	%
+    	\caption{True WS scores ($y$) against score using only WG items ($x$).
+    		$R^2$ values: action_words: 0.993; animals: 0.996; body_parts: 0.985;
+    		clothing: 0.980; connecting_words: N/A;
+    		descriptive_words: 0.989; food_drink: 0.973;
+    		furniture_rooms: 0.992; games_routines: 0.966; helping_verbs: 0.694;
+    		household: 0.993; locations: 0.911; outside: 0.973; people: 0.974;
+    		places: 0.942; pronouns: 0.947; quantifiers: 0.951;
+    		question_words: 0.99; sounds: 1.00; time_words: 0.976; toys: 0.899;
+    		vehicles: 0.966.}
+    	
+    	\label{fig:allWGWS}
+    	
+    \end{figure}
+
+    An additional key problem is that no \cwords{} items appear on the \gls{wg}
+    form. Secondly, \sounds{} is identical between the two forms. These two categories are
+    ignored for the total-score analyses to be more conservative in estimates of error rate.
+
+    \section{Results}
+
+    The Pearson correlation between the true \gls{ws} score and the calculated
+    \gls{wg} score for each individual/category was $r=0.962$ (Spearman $r=0.968$).
+    Mean differences
+    by category across ages are shown in \autoref{fig:diffs_by_cat}. Notably
+    large differences emerge in \food{}, \textit{Action Words},
+    and \textit{Descriptive Words}, whereas statistically no differences emerge
+    in \sounds{} and \textit{Question Words}. Despite the lack of \cwords{},
+    statistically significant differences don't seem to emerge until 23 months, and
+    even then never exceed a mean underestimate of more than 2 words.
+
+    \subsection{Total Score}
+
+    Within each
+    category, I regressed the ground-truth \gls{ws} score on age,
+    \gls{wg} score, the
+    age--score interaction, as well as age$^2$, WG$^2$ and the interaction of
+    the quadratic terms. The quadratic terms were included because of the
+    clear nonlinearity of the age effect in development, as well as the
+    nonlinear effect of \gls{wg} score on true \gls{ws} score
+    (\autoref{fig:allWGWS}).
+
+%    \[
+%        \hat{\textrm{WS}} = \beta0 + \beta_1(\textrm{age})
+%    \]
+
+    \begin{figure}
+        \centering
+        \subcaptionbox{Error in words between WS and
+                        $\hat{\textrm{WS}}$.\label{subfig:err}}{
+            \includegraphics[width=0.45\textwidth]{../MCDI-analysis/code/Wordbank/test_sample_error_in_words}
+        }
+
+        \subcaptionbox{Percent error for all test participants based on
+                        true WS score. \label{subfig:allpcterr}}{
+            \includegraphics[width=0.45\textwidth]{../MCDI-analysis/code/Wordbank/test_sample_pct_err}
+        }
+        \subcaptionbox{Percent error for all test participants, who had more
+                        than 50 words.\label{subfig:gt50pcterr}}{
+            \includegraphics[width=0.45\textwidth]{../MCDI-analysis/code/Wordbank/test_sample_pct_err_gt50}
+         }
+
+        \caption{Results of the modeling indicating total predicted WS score
+                    across all categories (except \cwords{}).}
+        \label{fig:error}
+
+    \end{figure}
+
+    \autoref{fig:error} shows the error rate among the test sample. As can be
+    seen in \autoref{subfig:err}, most participants are estimated to within
+    50 words of their true valeu. Furthermore, the percent error is small, with
+    the exception of participants with a very low ground-truth WS score
+    \autoref{subfig:allpcterr}.
+    Using 50 words as a cutoff (part of the Delay 3+ criterion), percent error
+    rates are typically within 15\% (\autoref{subfig:gt50pcterr}).
+
+\end{document}

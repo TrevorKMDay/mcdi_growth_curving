@@ -1,0 +1,909 @@
+Mplus VERSION 8.7
+MUTHEN & MUTHEN
+02/04/2023   2:46 PM
+
+INPUT INSTRUCTIONS
+
+  TITLE: Measurement Invariance Model for L_FURNIT
+  DATA: FILE = "I:/My
+   Drive/Research/MCDI/growth_curving/code/BEW-aMNLFA/one-factor-dataset//calibration.dat";
+  VARIABLE:
+  NAMES = ID_NUM AGE L_SOUNDS L_ANIMAL L_VEHICL L_TOYS L_FOODD L_CLOTH L_BODYP
+       L_HOUSEH L_FURNIT L_PEOPLE L_GAMESR L_ACTION L_DESCW S_PRON S_QWORDS L_LOCATE
+       S_QUANT S_HELPV S_CONCTW D_MALE D_MOMCOL DATA_BCP DATA_EIR AGE_E;
+  MISSING=.;
+  !
+  !
+  USEVARIABLES= L_SOUNDS L_ANIMAL L_VEHICL L_TOYS L_FOODD L_CLOTH L_BODYP L_HOUSEH L_FURNIT
+   L_PEOPLE L_GAMESR L_ACTION L_DESCW S_PRON S_QWORDS L_LOCATE S_QUANT S_HELPV S_CONCTW
+   D_MALE D_MOMCOL DATA_BCP DATA_EIR ;
+  AUXILIARY= AGE ;
+  !
+  !
+  CONSTRAINT= D_MALE D_MOMCOL DATA_BCP DATA_EIR ;
+  ANALYSIS: ESTIMATOR=ML;ALGORITHM=INTEGRATION;INTEGRATION=MONTECARLO;PROCESSORS=4;
+  MODEL: [ETA@0]; ETA@1;
+  ETA BY L_SOUNDS*(l1);
+  ETA BY L_ANIMAL*(l2);
+  ETA BY L_VEHICL*(l3);
+  ETA BY L_TOYS*(l4);
+  ETA BY L_FOODD*(l5);
+  ETA BY L_CLOTH*(l6);
+  ETA BY L_BODYP*(l7);
+  ETA BY L_HOUSEH*(l8);
+  ETA BY L_FURNIT*(l9);
+  ETA BY L_PEOPLE*(l10);
+  ETA BY L_GAMESR*(l11);
+  ETA BY L_ACTION*(l12);
+  ETA BY L_DESCW*(l13);
+  ETA BY S_PRON*(l14);
+  ETA BY S_QWORDS*(l15);
+  ETA BY L_LOCATE*(l16);
+  ETA BY S_QUANT*(l17);
+  ETA BY S_HELPV*(l18);
+  ETA BY S_CONCTW*(l19);
+  L_FURNIT on D_MALE D_MOMCOL DATA_BCP DATA_EIR;
+  MODEL CONSTRAINT: new(
+  l9_00*1
+  l9_1*0
+  l9_2*0
+  l9_3*0
+  l9_4*0
+  );
+  l9=l9_00
+  +l9_1*D_MALE
+  +l9_2*D_MOMCOL
+  +l9_3*DATA_BCP
+  +l9_4*DATA_EIR
+  ;
+  OUTPUT: tech1;
+
+
+
+INPUT READING TERMINATED NORMALLY
+
+
+
+Measurement Invariance Model for L_FURNIT
+
+SUMMARY OF ANALYSIS
+
+Number of groups                                                 1
+Number of observations                                       10462
+
+Number of dependent variables                                   19
+Number of independent variables                                  4
+Number of continuous latent variables                            1
+
+Observed dependent variables
+
+  Continuous
+   L_SOUNDS    L_ANIMAL    L_VEHICL    L_TOYS      L_FOODD     L_CLOTH
+   L_BODYP     L_HOUSEH    L_FURNIT    L_PEOPLE    L_GAMESR    L_ACTION
+   L_DESCW     S_PRON      S_QWORDS    L_LOCATE    S_QUANT     S_HELPV
+   S_CONCTW
+
+Observed independent variables
+   D_MALE      D_MOMCOL    DATA_BCP    DATA_EIR
+
+Observed auxiliary variables
+   AGE
+
+Continuous latent variables
+   ETA
+
+
+Estimator                                                       ML
+Information matrix                                        OBSERVED
+Optimization Specifications for the Quasi-Newton Algorithm for
+Continuous Outcomes
+  Maximum number of iterations                                 100
+  Convergence criterion                                  0.100D-05
+Optimization Specifications for the EM Algorithm
+  Maximum number of iterations                                 500
+  Convergence criteria
+    Loglikelihood change                                 0.100D-02
+    Relative loglikelihood change                        0.100D-05
+    Derivative                                           0.100D-02
+Optimization Specifications for the M step of the EM Algorithm for
+Categorical Latent variables
+  Number of M step iterations                                    1
+  M step convergence criterion                           0.100D-02
+  Basis for M step termination                           ITERATION
+Optimization Specifications for the M step of the EM Algorithm for
+Censored, Binary or Ordered Categorical (Ordinal), Unordered
+Categorical (Nominal) and Count Outcomes
+  Number of M step iterations                                    1
+  M step convergence criterion                           0.100D-02
+  Basis for M step termination                           ITERATION
+  Maximum value for logit thresholds                            15
+  Minimum value for logit thresholds                           -15
+  Minimum expected cell size for chi-square              0.100D-01
+Maximum number of iterations for H1                           2000
+Convergence criterion for H1                             0.100D-03
+Optimization algorithm                                         EMA
+Integration Specifications
+  Type                                                  MONTECARLO
+  Number of integration points                                   1
+  Dimensions of numerical integration                            0
+  Adaptive quadrature                                           ON
+  Monte Carlo integration seed                                   0
+Cholesky                                                       OFF
+
+Input data file(s)
+  I:/MyDrive/Research/MCDI/growth_curving/code/BEW-aMNLFA/one-factor-dataset//ca
+Input data format  FREE
+
+
+SUMMARY OF DATA
+
+     Number of missing data patterns             1
+
+
+COVARIANCE COVERAGE OF DATA
+
+Minimum covariance coverage value   0.100
+
+
+     PROPORTION OF DATA PRESENT FOR Y
+
+
+           Covariance Coverage
+              L_SOUNDS      L_ANIMAL      L_VEHICL      L_TOYS        L_FOODD
+              ________      ________      ________      ________      ________
+ L_SOUNDS       1.000
+ L_ANIMAL       1.000         1.000
+ L_VEHICL       1.000         1.000         1.000
+ L_TOYS         1.000         1.000         1.000         1.000
+ L_FOODD        1.000         1.000         1.000         1.000         1.000
+ L_CLOTH        1.000         1.000         1.000         1.000         1.000
+ L_BODYP        1.000         1.000         1.000         1.000         1.000
+ L_HOUSEH       1.000         1.000         1.000         1.000         1.000
+ L_FURNIT       1.000         1.000         1.000         1.000         1.000
+ L_PEOPLE       1.000         1.000         1.000         1.000         1.000
+ L_GAMESR       1.000         1.000         1.000         1.000         1.000
+ L_ACTION       1.000         1.000         1.000         1.000         1.000
+ L_DESCW        1.000         1.000         1.000         1.000         1.000
+ S_PRON         1.000         1.000         1.000         1.000         1.000
+ S_QWORDS       1.000         1.000         1.000         1.000         1.000
+ L_LOCATE       1.000         1.000         1.000         1.000         1.000
+ S_QUANT        1.000         1.000         1.000         1.000         1.000
+ S_HELPV        1.000         1.000         1.000         1.000         1.000
+ S_CONCTW       1.000         1.000         1.000         1.000         1.000
+ D_MALE         1.000         1.000         1.000         1.000         1.000
+ D_MOMCOL       1.000         1.000         1.000         1.000         1.000
+ DATA_BCP       1.000         1.000         1.000         1.000         1.000
+ DATA_EIR       1.000         1.000         1.000         1.000         1.000
+
+
+           Covariance Coverage
+              L_CLOTH       L_BODYP       L_HOUSEH      L_FURNIT      L_PEOPLE
+              ________      ________      ________      ________      ________
+ L_CLOTH        1.000
+ L_BODYP        1.000         1.000
+ L_HOUSEH       1.000         1.000         1.000
+ L_FURNIT       1.000         1.000         1.000         1.000
+ L_PEOPLE       1.000         1.000         1.000         1.000         1.000
+ L_GAMESR       1.000         1.000         1.000         1.000         1.000
+ L_ACTION       1.000         1.000         1.000         1.000         1.000
+ L_DESCW        1.000         1.000         1.000         1.000         1.000
+ S_PRON         1.000         1.000         1.000         1.000         1.000
+ S_QWORDS       1.000         1.000         1.000         1.000         1.000
+ L_LOCATE       1.000         1.000         1.000         1.000         1.000
+ S_QUANT        1.000         1.000         1.000         1.000         1.000
+ S_HELPV        1.000         1.000         1.000         1.000         1.000
+ S_CONCTW       1.000         1.000         1.000         1.000         1.000
+ D_MALE         1.000         1.000         1.000         1.000         1.000
+ D_MOMCOL       1.000         1.000         1.000         1.000         1.000
+ DATA_BCP       1.000         1.000         1.000         1.000         1.000
+ DATA_EIR       1.000         1.000         1.000         1.000         1.000
+
+
+           Covariance Coverage
+              L_GAMESR      L_ACTION      L_DESCW       S_PRON        S_QWORDS
+              ________      ________      ________      ________      ________
+ L_GAMESR       1.000
+ L_ACTION       1.000         1.000
+ L_DESCW        1.000         1.000         1.000
+ S_PRON         1.000         1.000         1.000         1.000
+ S_QWORDS       1.000         1.000         1.000         1.000         1.000
+ L_LOCATE       1.000         1.000         1.000         1.000         1.000
+ S_QUANT        1.000         1.000         1.000         1.000         1.000
+ S_HELPV        1.000         1.000         1.000         1.000         1.000
+ S_CONCTW       1.000         1.000         1.000         1.000         1.000
+ D_MALE         1.000         1.000         1.000         1.000         1.000
+ D_MOMCOL       1.000         1.000         1.000         1.000         1.000
+ DATA_BCP       1.000         1.000         1.000         1.000         1.000
+ DATA_EIR       1.000         1.000         1.000         1.000         1.000
+
+
+           Covariance Coverage
+              L_LOCATE      S_QUANT       S_HELPV       S_CONCTW      D_MALE
+              ________      ________      ________      ________      ________
+ L_LOCATE       1.000
+ S_QUANT        1.000         1.000
+ S_HELPV        1.000         1.000         1.000
+ S_CONCTW       1.000         1.000         1.000         1.000
+ D_MALE         1.000         1.000         1.000         1.000         1.000
+ D_MOMCOL       1.000         1.000         1.000         1.000         1.000
+ DATA_BCP       1.000         1.000         1.000         1.000         1.000
+ DATA_EIR       1.000         1.000         1.000         1.000         1.000
+
+
+           Covariance Coverage
+              D_MOMCOL      DATA_BCP      DATA_EIR
+              ________      ________      ________
+ D_MOMCOL       1.000
+ DATA_BCP       1.000         1.000
+ DATA_EIR       1.000         1.000         1.000
+
+
+
+UNIVARIATE SAMPLE STATISTICS
+
+
+     UNIVARIATE HIGHER-ORDER MOMENT DESCRIPTIVE STATISTICS
+
+         Variable/         Mean/     Skewness/   Minimum/ % with                Percentiles
+        Sample Size      Variance    Kurtosis    Maximum  Min/Max      20%/60%    40%/80%    Median
+
+     L_SOUNDS              0.608      -0.415       0.000    9.14%       0.250      0.583      0.667
+           10462.000       0.122      -1.246       1.000   24.13%       0.833      1.000
+     L_ANIMAL              0.394       0.472       0.000   13.40%       0.047      0.140      0.256
+           10462.000       0.135      -1.380       1.000    8.43%       0.442      0.837
+     L_VEHICL              0.389       0.393       0.000   29.75%       0.000      0.143      0.286
+           10462.000       0.141      -1.458       1.000    8.57%       0.500      0.857
+     L_TOYS                0.404       0.482       0.000   16.70%       0.056      0.167      0.278
+           10462.000       0.129      -1.292       1.000   11.06%       0.444      0.833
+     L_FOODD               0.351       0.596       0.000   19.45%       0.015      0.088      0.162
+           10462.000       0.134      -1.275       1.000    4.28%       0.353      0.809
+     L_CLOTH               0.327       0.662       0.000   27.45%       0.000      0.071      0.179
+           10462.000       0.120      -1.088       1.000    3.80%       0.321      0.714
+     L_BODYP               0.412       0.308       0.000   26.46%       0.000      0.111      0.259
+           10462.000       0.155      -1.618       1.000    6.39%       0.556      0.889
+     L_HOUSEH              0.344       0.615       0.000   24.06%       0.000      0.060      0.140
+           10462.000       0.140      -1.281       1.000    4.70%       0.340      0.820
+     L_FURNIT              0.299       0.795       0.000   37.98%       0.000      0.030      0.091
+           10462.000       0.132      -1.016       1.000    3.44%       0.212      0.758
+     L_PEOPLE              0.339       0.834       0.000    9.01%       0.069      0.172      0.207
+           10462.000       0.090      -0.557       1.000    3.76%       0.310      0.655
+     L_GAMESR              0.450       0.316       0.000   10.28%       0.080      0.240      0.360
+           10462.000       0.128      -1.407       1.000   12.05%       0.520      0.880
+     L_ACTION              0.299       0.852       0.000   28.45%       0.000      0.019      0.068
+           10462.000       0.138      -0.940       1.000    3.53%       0.204      0.777
+     L_DESCW               0.289       0.904       0.000   26.58%       0.000      0.032      0.079
+           10462.000       0.125      -0.776       1.000    3.84%       0.206      0.698
+     S_PRON                0.219       1.430       0.000   34.04%       0.000      0.040      0.080
+           10462.000       0.087       0.848       1.000    3.75%       0.160      0.440
+     S_QWORDS              0.216       1.332       0.000   54.64%       0.000      0.000      0.000
+           10462.000       0.097       0.494       1.000    5.79%       0.143      0.429
+     L_LOCATE              0.251       1.131       0.000   34.78%       0.000      0.038      0.115
+           10462.000       0.098      -0.052       1.000    3.29%       0.192      0.538
+     S_QUANT               0.203       1.464       0.000   42.65%       0.000      0.000      0.059
+           10462.000       0.086       0.873       1.000    3.35%       0.118      0.412
+     S_HELPV               0.183       1.620       0.000   53.28%       0.000      0.000      0.000
+           10462.000       0.089       1.294       1.000    3.99%       0.048      0.381
+     S_CONCTW              0.123       2.315       0.000   74.37%       0.000      0.000      0.000
+           10462.000       0.070       4.297       1.000    4.68%       0.000      0.167
+     D_MALE                0.027      -0.054      -1.000   48.65%      -1.000     -1.000      1.000
+           10462.000       0.999      -1.997       1.000   51.35%       1.000      1.000
+     D_MOMCOL             -0.033       0.067      -1.000   51.67%      -1.000     -1.000     -1.000
+           10462.000       0.999      -1.996       1.000   48.33%       1.000      1.000
+     DATA_BCP             -0.874       3.594      -1.000   93.69%      -1.000     -1.000     -1.000
+           10462.000       0.236      10.919       1.000    6.31%      -1.000     -1.000
+     DATA_EIR             -0.366       0.787      -1.000   68.30%      -1.000     -1.000     -1.000
+           10462.000       0.866      -1.381       1.000   31.70%      -1.000      1.000
+
+
+THE MODEL ESTIMATION TERMINATED NORMALLY
+
+
+
+MODEL FIT INFORMATION
+
+Number of Free Parameters                       65
+
+Loglikelihood
+
+          H0 Value                      130034.585
+
+Information Criteria
+
+          Akaike (AIC)                 -259939.169
+          Bayesian (BIC)               -259467.561
+          Sample-Size Adjusted BIC     -259674.122
+            (n* = (n + 2) / 24)
+
+
+
+MODEL RESULTS
+
+                                                    Two-Tailed
+                    Estimate       S.E.  Est./S.E.    P-Value
+
+ ETA      BY
+    L_SOUNDS           0.270      0.003     94.303      0.000
+    L_ANIMAL           0.353      0.003    133.348      0.000
+    L_VEHICL           0.356      0.003    130.576      0.000
+    L_TOYS             0.348      0.003    135.820      0.000
+    L_FOODD            0.360      0.003    139.651      0.000
+    L_CLOTH            0.338      0.002    138.323      0.000
+    L_BODYP            0.375      0.003    131.618      0.000
+    L_HOUSEH           0.368      0.003    140.326      0.000
+    L_FURNIT         999.000      0.000    999.000    999.000
+    L_PEOPLE           0.288      0.002    132.865      0.000
+    L_GAMESR           0.340      0.003    130.814      0.000
+    L_ACTION           0.360      0.003    136.655      0.000
+    L_DESCW            0.343      0.003    136.431      0.000
+    S_PRON             0.262      0.002    117.081      0.000
+    S_QWORDS           0.262      0.002    106.812      0.000
+    L_LOCATE           0.292      0.002    127.452      0.000
+    S_QUANT            0.260      0.002    115.897      0.000
+    S_HELPV            0.256      0.002    110.386      0.000
+    S_CONCTW           0.191      0.002     85.940      0.000
+
+ L_FURNIT   ON
+    D_MALE             0.002      0.001      2.908      0.004
+    D_MOMCOL          -0.006      0.001     -7.129      0.000
+    DATA_BCP           0.011      0.002      6.103      0.000
+    DATA_EIR          -0.005      0.001     -5.613      0.000
+
+ Means
+    ETA                0.000      0.000    999.000    999.000
+
+ Intercepts
+    L_SOUNDS           0.608      0.003    177.835      0.000
+    L_ANIMAL           0.394      0.004    109.416      0.000
+    L_VEHICL           0.389      0.004    105.818      0.000
+    L_TOYS             0.404      0.004    114.919      0.000
+    L_FOODD            0.351      0.004     97.849      0.000
+    L_CLOTH            0.327      0.003     96.762      0.000
+    L_BODYP            0.412      0.004    106.841      0.000
+    L_HOUSEH           0.344      0.004     94.176      0.000
+    L_FURNIT           0.306      0.004     76.869      0.000
+    L_PEOPLE           0.339      0.003    115.326      0.000
+    L_GAMESR           0.450      0.004    128.651      0.000
+    L_ACTION           0.299      0.004     82.491      0.000
+    L_DESCW            0.289      0.003     83.643      0.000
+    S_PRON             0.219      0.003     76.012      0.000
+    S_QWORDS           0.216      0.003     70.886      0.000
+    L_LOCATE           0.251      0.003     82.229      0.000
+    S_QUANT            0.203      0.003     70.591      0.000
+    S_HELPV            0.183      0.003     62.589      0.000
+    S_CONCTW           0.123      0.003     47.666      0.000
+
+ Variances
+    ETA                1.000      0.000    999.000    999.000
+
+ Residual Variances
+    L_SOUNDS           0.049      0.001     71.735      0.000
+    L_ANIMAL           0.011      0.000     67.954      0.000
+    L_VEHICL           0.014      0.000     68.817      0.000
+    L_TOYS             0.008      0.000     66.438      0.000
+    L_FOODD            0.005      0.000     61.592      0.000
+    L_CLOTH            0.005      0.000     64.764      0.000
+    L_BODYP            0.015      0.000     68.123      0.000
+    L_HOUSEH           0.004      0.000     60.527      0.000
+    L_FURNIT           0.006      0.000     64.517      0.000
+    L_PEOPLE           0.008      0.000     68.364      0.000
+    L_GAMESR           0.013      0.000     69.154      0.000
+    L_ACTION           0.008      0.000     65.212      0.000
+    L_DESCW            0.007      0.000     65.215      0.000
+    S_PRON             0.018      0.000     70.456      0.000
+    S_QWORDS           0.028      0.000     71.250      0.000
+    L_LOCATE           0.012      0.000     69.064      0.000
+    S_QUANT            0.019      0.000     70.525      0.000
+    S_HELPV            0.023      0.000     70.942      0.000
+    S_CONCTW           0.033      0.000     71.833      0.000
+
+New/Additional Parameters
+    L9_00              0.360      0.003    112.766      0.000
+    L9_1              -0.001      0.001     -0.648      0.517
+    L9_2               0.001      0.001      1.260      0.208
+    L9_3               0.001      0.002      0.351      0.726
+    L9_4               0.004      0.001      4.600      0.000
+
+
+QUALITY OF NUMERICAL RESULTS
+
+     Condition Number for the Information Matrix              0.668E-08
+       (ratio of smallest to largest eigenvalue)
+
+
+TECHNICAL 1 OUTPUT
+
+
+     PARAMETER SPECIFICATION
+
+
+           NU
+              L_SOUNDS      L_ANIMAL      L_VEHICL      L_TOYS        L_FOODD
+              ________      ________      ________      ________      ________
+                    1             2             3             4             5
+
+
+           NU
+              L_CLOTH       L_BODYP       L_HOUSEH      L_FURNIT      L_PEOPLE
+              ________      ________      ________      ________      ________
+                    6             7             8             0             9
+
+
+           NU
+              L_GAMESR      L_ACTION      L_DESCW       S_PRON        S_QWORDS
+              ________      ________      ________      ________      ________
+                   10            11            12            13            14
+
+
+           NU
+              L_LOCATE      S_QUANT       S_HELPV       S_CONCTW      D_MALE
+              ________      ________      ________      ________      ________
+                   15            16            17            18             0
+
+
+           NU
+              D_MOMCOL      DATA_BCP      DATA_EIR
+              ________      ________      ________
+                    0             0             0
+
+
+           LAMBDA
+              ETA           L_FURNIT      D_MALE        D_MOMCOL      DATA_BCP
+              ________      ________      ________      ________      ________
+ L_SOUNDS          19             0             0             0             0
+ L_ANIMAL          20             0             0             0             0
+ L_VEHICL          21             0             0             0             0
+ L_TOYS            22             0             0             0             0
+ L_FOODD           23             0             0             0             0
+ L_CLOTH           24             0             0             0             0
+ L_BODYP           25             0             0             0             0
+ L_HOUSEH          26             0             0             0             0
+ L_FURNIT           0             0             0             0             0
+ L_PEOPLE          27             0             0             0             0
+ L_GAMESR          28             0             0             0             0
+ L_ACTION          29             0             0             0             0
+ L_DESCW           30             0             0             0             0
+ S_PRON            31             0             0             0             0
+ S_QWORDS          32             0             0             0             0
+ L_LOCATE          33             0             0             0             0
+ S_QUANT           34             0             0             0             0
+ S_HELPV           35             0             0             0             0
+ S_CONCTW          36             0             0             0             0
+ D_MALE             0             0             0             0             0
+ D_MOMCOL           0             0             0             0             0
+ DATA_BCP           0             0             0             0             0
+ DATA_EIR           0             0             0             0             0
+
+
+           LAMBDA
+              DATA_EIR
+              ________
+ L_SOUNDS           0
+ L_ANIMAL           0
+ L_VEHICL           0
+ L_TOYS             0
+ L_FOODD            0
+ L_CLOTH            0
+ L_BODYP            0
+ L_HOUSEH           0
+ L_FURNIT           0
+ L_PEOPLE           0
+ L_GAMESR           0
+ L_ACTION           0
+ L_DESCW            0
+ S_PRON             0
+ S_QWORDS           0
+ L_LOCATE           0
+ S_QUANT            0
+ S_HELPV            0
+ S_CONCTW           0
+ D_MALE             0
+ D_MOMCOL           0
+ DATA_BCP           0
+ DATA_EIR           0
+
+
+           THETA
+              L_SOUNDS      L_ANIMAL      L_VEHICL      L_TOYS        L_FOODD
+              ________      ________      ________      ________      ________
+ L_SOUNDS          37
+ L_ANIMAL           0            38
+ L_VEHICL           0             0            39
+ L_TOYS             0             0             0            40
+ L_FOODD            0             0             0             0            41
+ L_CLOTH            0             0             0             0             0
+ L_BODYP            0             0             0             0             0
+ L_HOUSEH           0             0             0             0             0
+ L_FURNIT           0             0             0             0             0
+ L_PEOPLE           0             0             0             0             0
+ L_GAMESR           0             0             0             0             0
+ L_ACTION           0             0             0             0             0
+ L_DESCW            0             0             0             0             0
+ S_PRON             0             0             0             0             0
+ S_QWORDS           0             0             0             0             0
+ L_LOCATE           0             0             0             0             0
+ S_QUANT            0             0             0             0             0
+ S_HELPV            0             0             0             0             0
+ S_CONCTW           0             0             0             0             0
+ D_MALE             0             0             0             0             0
+ D_MOMCOL           0             0             0             0             0
+ DATA_BCP           0             0             0             0             0
+ DATA_EIR           0             0             0             0             0
+
+
+           THETA
+              L_CLOTH       L_BODYP       L_HOUSEH      L_FURNIT      L_PEOPLE
+              ________      ________      ________      ________      ________
+ L_CLOTH           42
+ L_BODYP            0            43
+ L_HOUSEH           0             0            44
+ L_FURNIT           0             0             0             0
+ L_PEOPLE           0             0             0             0            45
+ L_GAMESR           0             0             0             0             0
+ L_ACTION           0             0             0             0             0
+ L_DESCW            0             0             0             0             0
+ S_PRON             0             0             0             0             0
+ S_QWORDS           0             0             0             0             0
+ L_LOCATE           0             0             0             0             0
+ S_QUANT            0             0             0             0             0
+ S_HELPV            0             0             0             0             0
+ S_CONCTW           0             0             0             0             0
+ D_MALE             0             0             0             0             0
+ D_MOMCOL           0             0             0             0             0
+ DATA_BCP           0             0             0             0             0
+ DATA_EIR           0             0             0             0             0
+
+
+           THETA
+              L_GAMESR      L_ACTION      L_DESCW       S_PRON        S_QWORDS
+              ________      ________      ________      ________      ________
+ L_GAMESR          46
+ L_ACTION           0            47
+ L_DESCW            0             0            48
+ S_PRON             0             0             0            49
+ S_QWORDS           0             0             0             0            50
+ L_LOCATE           0             0             0             0             0
+ S_QUANT            0             0             0             0             0
+ S_HELPV            0             0             0             0             0
+ S_CONCTW           0             0             0             0             0
+ D_MALE             0             0             0             0             0
+ D_MOMCOL           0             0             0             0             0
+ DATA_BCP           0             0             0             0             0
+ DATA_EIR           0             0             0             0             0
+
+
+           THETA
+              L_LOCATE      S_QUANT       S_HELPV       S_CONCTW      D_MALE
+              ________      ________      ________      ________      ________
+ L_LOCATE          51
+ S_QUANT            0            52
+ S_HELPV            0             0            53
+ S_CONCTW           0             0             0            54
+ D_MALE             0             0             0             0             0
+ D_MOMCOL           0             0             0             0             0
+ DATA_BCP           0             0             0             0             0
+ DATA_EIR           0             0             0             0             0
+
+
+           THETA
+              D_MOMCOL      DATA_BCP      DATA_EIR
+              ________      ________      ________
+ D_MOMCOL           0
+ DATA_BCP           0             0
+ DATA_EIR           0             0             0
+
+
+           ALPHA
+              ETA           L_FURNIT      D_MALE        D_MOMCOL      DATA_BCP
+              ________      ________      ________      ________      ________
+                    0            55             0             0             0
+
+
+           ALPHA
+              DATA_EIR
+              ________
+                    0
+
+
+           BETA
+              ETA           L_FURNIT      D_MALE        D_MOMCOL      DATA_BCP
+              ________      ________      ________      ________      ________
+ ETA                0             0             0             0             0
+ L_FURNIT          56             0            57            58            59
+ D_MALE             0             0             0             0             0
+ D_MOMCOL           0             0             0             0             0
+ DATA_BCP           0             0             0             0             0
+ DATA_EIR           0             0             0             0             0
+
+
+           BETA
+              DATA_EIR
+              ________
+ ETA                0
+ L_FURNIT          60
+ D_MALE             0
+ D_MOMCOL           0
+ DATA_BCP           0
+ DATA_EIR           0
+
+
+           PSI
+              ETA           L_FURNIT      D_MALE        D_MOMCOL      DATA_BCP
+              ________      ________      ________      ________      ________
+ ETA                0
+ L_FURNIT           0            61
+ D_MALE             0             0             0
+ D_MOMCOL           0             0             0             0
+ DATA_BCP           0             0             0             0             0
+ DATA_EIR           0             0             0             0             0
+
+
+           PSI
+              DATA_EIR
+              ________
+ DATA_EIR           0
+
+
+     PARAMETER SPECIFICATION FOR THE ADDITIONAL PARAMETERS
+
+
+           NEW/ADDITIONAL PARAMETERS
+              L9_00         L9_1          L9_2          L9_3          L9_4
+              ________      ________      ________      ________      ________
+                   62            63            64            65            66
+
+
+     STARTING VALUES
+
+
+           NU
+              L_SOUNDS      L_ANIMAL      L_VEHICL      L_TOYS        L_FOODD
+              ________      ________      ________      ________      ________
+                0.608         0.394         0.389         0.404         0.351
+
+
+           NU
+              L_CLOTH       L_BODYP       L_HOUSEH      L_FURNIT      L_PEOPLE
+              ________      ________      ________      ________      ________
+                0.327         0.412         0.344         0.000         0.339
+
+
+           NU
+              L_GAMESR      L_ACTION      L_DESCW       S_PRON        S_QWORDS
+              ________      ________      ________      ________      ________
+                0.450         0.299         0.289         0.219         0.216
+
+
+           NU
+              L_LOCATE      S_QUANT       S_HELPV       S_CONCTW      D_MALE
+              ________      ________      ________      ________      ________
+                0.251         0.203         0.183         0.123         0.000
+
+
+           NU
+              D_MOMCOL      DATA_BCP      DATA_EIR
+              ________      ________      ________
+                0.000         0.000         0.000
+
+
+           LAMBDA
+              ETA           L_FURNIT      D_MALE        D_MOMCOL      DATA_BCP
+              ________      ________      ________      ________      ________
+ L_SOUNDS       1.000         0.000         0.000         0.000         0.000
+ L_ANIMAL       1.000         0.000         0.000         0.000         0.000
+ L_VEHICL       1.000         0.000         0.000         0.000         0.000
+ L_TOYS         1.000         0.000         0.000         0.000         0.000
+ L_FOODD        1.000         0.000         0.000         0.000         0.000
+ L_CLOTH        1.000         0.000         0.000         0.000         0.000
+ L_BODYP        1.000         0.000         0.000         0.000         0.000
+ L_HOUSEH       1.000         0.000         0.000         0.000         0.000
+ L_FURNIT       0.000         1.000         0.000         0.000         0.000
+ L_PEOPLE       1.000         0.000         0.000         0.000         0.000
+ L_GAMESR       1.000         0.000         0.000         0.000         0.000
+ L_ACTION       1.000         0.000         0.000         0.000         0.000
+ L_DESCW        1.000         0.000         0.000         0.000         0.000
+ S_PRON         1.000         0.000         0.000         0.000         0.000
+ S_QWORDS       1.000         0.000         0.000         0.000         0.000
+ L_LOCATE       1.000         0.000         0.000         0.000         0.000
+ S_QUANT        1.000         0.000         0.000         0.000         0.000
+ S_HELPV        1.000         0.000         0.000         0.000         0.000
+ S_CONCTW       1.000         0.000         0.000         0.000         0.000
+ D_MALE         0.000         0.000         1.000         0.000         0.000
+ D_MOMCOL       0.000         0.000         0.000         1.000         0.000
+ DATA_BCP       0.000         0.000         0.000         0.000         1.000
+ DATA_EIR       0.000         0.000         0.000         0.000         0.000
+
+
+           LAMBDA
+              DATA_EIR
+              ________
+ L_SOUNDS       0.000
+ L_ANIMAL       0.000
+ L_VEHICL       0.000
+ L_TOYS         0.000
+ L_FOODD        0.000
+ L_CLOTH        0.000
+ L_BODYP        0.000
+ L_HOUSEH       0.000
+ L_FURNIT       0.000
+ L_PEOPLE       0.000
+ L_GAMESR       0.000
+ L_ACTION       0.000
+ L_DESCW        0.000
+ S_PRON         0.000
+ S_QWORDS       0.000
+ L_LOCATE       0.000
+ S_QUANT        0.000
+ S_HELPV        0.000
+ S_CONCTW       0.000
+ D_MALE         0.000
+ D_MOMCOL       0.000
+ DATA_BCP       0.000
+ DATA_EIR       1.000
+
+
+           THETA
+              L_SOUNDS      L_ANIMAL      L_VEHICL      L_TOYS        L_FOODD
+              ________      ________      ________      ________      ________
+ L_SOUNDS       0.061
+ L_ANIMAL       0.000         0.068
+ L_VEHICL       0.000         0.000         0.071
+ L_TOYS         0.000         0.000         0.000         0.065
+ L_FOODD        0.000         0.000         0.000         0.000         0.067
+ L_CLOTH        0.000         0.000         0.000         0.000         0.000
+ L_BODYP        0.000         0.000         0.000         0.000         0.000
+ L_HOUSEH       0.000         0.000         0.000         0.000         0.000
+ L_FURNIT       0.000         0.000         0.000         0.000         0.000
+ L_PEOPLE       0.000         0.000         0.000         0.000         0.000
+ L_GAMESR       0.000         0.000         0.000         0.000         0.000
+ L_ACTION       0.000         0.000         0.000         0.000         0.000
+ L_DESCW        0.000         0.000         0.000         0.000         0.000
+ S_PRON         0.000         0.000         0.000         0.000         0.000
+ S_QWORDS       0.000         0.000         0.000         0.000         0.000
+ L_LOCATE       0.000         0.000         0.000         0.000         0.000
+ S_QUANT        0.000         0.000         0.000         0.000         0.000
+ S_HELPV        0.000         0.000         0.000         0.000         0.000
+ S_CONCTW       0.000         0.000         0.000         0.000         0.000
+ D_MALE         0.000         0.000         0.000         0.000         0.000
+ D_MOMCOL       0.000         0.000         0.000         0.000         0.000
+ DATA_BCP       0.000         0.000         0.000         0.000         0.000
+ DATA_EIR       0.000         0.000         0.000         0.000         0.000
+
+
+           THETA
+              L_CLOTH       L_BODYP       L_HOUSEH      L_FURNIT      L_PEOPLE
+              ________      ________      ________      ________      ________
+ L_CLOTH        0.060
+ L_BODYP        0.000         0.078
+ L_HOUSEH       0.000         0.000         0.070
+ L_FURNIT       0.000         0.000         0.000         0.000
+ L_PEOPLE       0.000         0.000         0.000         0.000         0.045
+ L_GAMESR       0.000         0.000         0.000         0.000         0.000
+ L_ACTION       0.000         0.000         0.000         0.000         0.000
+ L_DESCW        0.000         0.000         0.000         0.000         0.000
+ S_PRON         0.000         0.000         0.000         0.000         0.000
+ S_QWORDS       0.000         0.000         0.000         0.000         0.000
+ L_LOCATE       0.000         0.000         0.000         0.000         0.000
+ S_QUANT        0.000         0.000         0.000         0.000         0.000
+ S_HELPV        0.000         0.000         0.000         0.000         0.000
+ S_CONCTW       0.000         0.000         0.000         0.000         0.000
+ D_MALE         0.000         0.000         0.000         0.000         0.000
+ D_MOMCOL       0.000         0.000         0.000         0.000         0.000
+ DATA_BCP       0.000         0.000         0.000         0.000         0.000
+ DATA_EIR       0.000         0.000         0.000         0.000         0.000
+
+
+           THETA
+              L_GAMESR      L_ACTION      L_DESCW       S_PRON        S_QWORDS
+              ________      ________      ________      ________      ________
+ L_GAMESR       0.064
+ L_ACTION       0.000         0.069
+ L_DESCW        0.000         0.000         0.063
+ S_PRON         0.000         0.000         0.000         0.043
+ S_QWORDS       0.000         0.000         0.000         0.000         0.049
+ L_LOCATE       0.000         0.000         0.000         0.000         0.000
+ S_QUANT        0.000         0.000         0.000         0.000         0.000
+ S_HELPV        0.000         0.000         0.000         0.000         0.000
+ S_CONCTW       0.000         0.000         0.000         0.000         0.000
+ D_MALE         0.000         0.000         0.000         0.000         0.000
+ D_MOMCOL       0.000         0.000         0.000         0.000         0.000
+ DATA_BCP       0.000         0.000         0.000         0.000         0.000
+ DATA_EIR       0.000         0.000         0.000         0.000         0.000
+
+
+           THETA
+              L_LOCATE      S_QUANT       S_HELPV       S_CONCTW      D_MALE
+              ________      ________      ________      ________      ________
+ L_LOCATE       0.049
+ S_QUANT        0.000         0.043
+ S_HELPV        0.000         0.000         0.045
+ S_CONCTW       0.000         0.000         0.000         0.035
+ D_MALE         0.000         0.000         0.000         0.000         0.000
+ D_MOMCOL       0.000         0.000         0.000         0.000         0.000
+ DATA_BCP       0.000         0.000         0.000         0.000         0.000
+ DATA_EIR       0.000         0.000         0.000         0.000         0.000
+
+
+           THETA
+              D_MOMCOL      DATA_BCP      DATA_EIR
+              ________      ________      ________
+ D_MOMCOL       0.000
+ DATA_BCP       0.000         0.000
+ DATA_EIR       0.000         0.000         0.000
+
+
+           ALPHA
+              ETA           L_FURNIT      D_MALE        D_MOMCOL      DATA_BCP
+              ________      ________      ________      ________      ________
+                0.000         0.299         0.000         0.000         0.000
+
+
+           ALPHA
+              DATA_EIR
+              ________
+                0.000
+
+
+           BETA
+              ETA           L_FURNIT      D_MALE        D_MOMCOL      DATA_BCP
+              ________      ________      ________      ________      ________
+ ETA            0.000         0.000         0.000         0.000         0.000
+ L_FURNIT       1.000         0.000         0.000         0.000         0.000
+ D_MALE         0.000         0.000         0.000         0.000         0.000
+ D_MOMCOL       0.000         0.000         0.000         0.000         0.000
+ DATA_BCP       0.000         0.000         0.000         0.000         0.000
+ DATA_EIR       0.000         0.000         0.000         0.000         0.000
+
+
+           BETA
+              DATA_EIR
+              ________
+ ETA            0.000
+ L_FURNIT       0.000
+ D_MALE         0.000
+ D_MOMCOL       0.000
+ DATA_BCP       0.000
+ DATA_EIR       0.000
+
+
+           PSI
+              ETA           L_FURNIT      D_MALE        D_MOMCOL      DATA_BCP
+              ________      ________      ________      ________      ________
+ ETA            1.000
+ L_FURNIT       0.000         0.066
+ D_MALE         0.000         0.000         0.500
+ D_MOMCOL       0.000         0.000         0.000         0.499
+ DATA_BCP       0.000         0.000         0.000         0.000         0.118
+ DATA_EIR       0.000         0.000         0.000         0.000         0.000
+
+
+           PSI
+              DATA_EIR
+              ________
+ DATA_EIR       0.433
+
+
+     STARTING VALUES FOR THE ADDITIONAL PARAMETERS
+
+
+           NEW/ADDITIONAL PARAMETERS
+              L9_00         L9_1          L9_2          L9_3          L9_4
+              ________      ________      ________      ________      ________
+                1.000         0.000         0.000         0.000         0.000
+
+
+     Beginning Time:  14:46:55
+        Ending Time:  14:57:03
+       Elapsed Time:  00:10:08
+
+
+
+MUTHEN & MUTHEN
+3463 Stoner Ave.
+Los Angeles, CA  90066
+
+Tel: (310) 391-9971
+Fax: (310) 391-8971
+Web: www.StatModel.com
+Support: Support@StatModel.com
+
+Copyright (c) 1998-2021 Muthen & Muthen

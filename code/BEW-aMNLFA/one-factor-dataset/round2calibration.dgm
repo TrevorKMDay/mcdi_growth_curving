@@ -1,0 +1,229 @@
+VERSION 1.1.0
+INPUT
+TITLE:
+ Round 2 Calibration Model
+DATA:
+ FILE = "I:/My
+ Drive/Research/MCDI/growth_curving/code/BEW-aMNLFA/one-factor-dataset//calibration.dat";
+VARIABLE:
+NAMES = ID_NUM AGE L_SOUNDS L_ANIMAL L_VEHICL L_TOYS L_FOODD L_CLOTH L_BODYP
+     L_HOUSEH L_FURNIT L_PEOPLE L_GAMESR L_ACTION L_DESCW S_PRON S_QWORDS L_LOCATE
+     S_QUANT S_HELPV S_CONCTW D_MALE D_MOMCOL DATA_BCP DATA_EIR AGE_E;
+MISSING=.;
+USEVARIABLES= L_SOUNDS L_ANIMAL L_VEHICL L_TOYS L_FOODD L_CLOTH L_BODYP L_HOUSEH L_FURNIT
+ L_PEOPLE L_GAMESR L_ACTION L_DESCW S_PRON S_QWORDS L_LOCATE S_QUANT S_HELPV S_CONCTW
+ D_MALE D_MOMCOL DATA_BCP DATA_EIR AGE_E;
+AUXILIARY= AGE ;
+CONSTRAINT= AGE_E D_MALE D_MOMCOL DATA_BCP DATA_EIR ;
+ANALYSIS:
+ ESTIMATOR=ML;ALGORITHM=EM;INTEGRATION=MONTECARLO;PROCESSORS=4;
+OUTPUT:
+ tech1;
+MODEL:
+ [ETA@0];ETA*(veta);
+ETA BY L_SOUNDS*(l_1);
+ETA BY L_ANIMAL*(l_2);
+ETA BY L_VEHICL*(l_3);
+ETA BY L_TOYS*(l_4);
+ETA BY L_FOODD*(l_5);
+ETA BY L_CLOTH*(l_6);
+ETA BY L_BODYP*(l_7);
+ETA BY L_HOUSEH*(l_8);
+ETA BY L_FURNIT*(l_9);
+ETA BY L_PEOPLE*(l_10);
+ETA BY L_GAMESR*(l_11);
+ETA BY L_ACTION*(l_12);
+ETA BY L_DESCW*(l_13);
+ETA BY S_PRON*(l_14);
+ETA BY S_QWORDS*(l_15);
+ETA BY L_LOCATE*(l_16);
+ETA BY S_QUANT*(l_17);
+ETA BY S_HELPV*(l_18);
+ETA BY S_CONCTW*(l_19);
+ETA ON AGE_E; ETA ON DATA_BCP; ETA ON DATA_EIR; ETA ON D_MALE; ETA ON D_MOMCOL;
+L_SOUNDS on D_MALE D_MOMCOL DATA_BCP DATA_EIR;
+L_ANIMAL on D_MALE D_MOMCOL DATA_BCP DATA_EIR;
+L_VEHICL on D_MALE D_MOMCOL DATA_BCP DATA_EIR;
+L_TOYS on D_MALE D_MOMCOL DATA_BCP DATA_EIR;
+L_FOODD on D_MALE D_MOMCOL DATA_BCP DATA_EIR;
+L_CLOTH on D_MALE D_MOMCOL DATA_BCP DATA_EIR;
+L_BODYP on D_MALE D_MOMCOL DATA_BCP DATA_EIR;
+L_HOUSEH on D_MALE D_MOMCOL DATA_BCP DATA_EIR;
+L_FURNIT on D_MALE D_MOMCOL DATA_BCP DATA_EIR;
+L_PEOPLE on D_MALE DATA_BCP DATA_EIR;
+L_GAMESR on D_MALE D_MOMCOL DATA_BCP DATA_EIR;
+L_ACTION on D_MALE D_MOMCOL DATA_BCP DATA_EIR;
+L_DESCW on D_MALE D_MOMCOL DATA_BCP DATA_EIR;
+S_PRON on D_MALE D_MOMCOL DATA_BCP DATA_EIR;
+S_QWORDS on D_MALE D_MOMCOL DATA_BCP DATA_EIR;
+L_LOCATE on D_MALE DATA_BCP DATA_EIR;
+S_QUANT on D_MALE D_MOMCOL DATA_BCP DATA_EIR;
+S_HELPV on D_MALE D_MOMCOL DATA_BCP DATA_EIR;
+S_CONCTW on D_MALE D_MOMCOL DATA_BCP DATA_EIR;
+INPUT_END
+1
+0
+0
+0
+ML
+1
+GENERAL
+0
+19
+1
+5
+l_sounds l_animal l_vehicl l_toys l_foodd l_cloth l_bodyp l_househ l_furnit l_people l_gamesr l_action l_descw s_pron s_qwords l_locate s_quant s_helpv s_conctw eta d_male d_momcol data_bcp data_eir age_e
+2
+-1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 1 0 0 0 0 0
+0
+1
+eta
+l_sounds l_animal l_vehicl l_toys l_foodd l_cloth l_bodyp l_househ l_furnit l_people l_gamesr l_action l_descw s_pron s_qwords l_locate s_quant s_helpv s_conctw
+1 1 eta l_sounds 999.000
+91 1 eta l_sounds l_1
+1 1 eta l_animal 999.000
+91 1 eta l_animal l_2
+1 1 eta l_vehicl 999.000
+91 1 eta l_vehicl l_3
+1 1 eta l_toys 999.000
+91 1 eta l_toys l_4
+1 1 eta l_foodd 999.000
+91 1 eta l_foodd l_5
+1 1 eta l_cloth 999.000
+91 1 eta l_cloth l_6
+1 1 eta l_bodyp 999.000
+91 1 eta l_bodyp l_7
+1 1 eta l_househ 999.000
+91 1 eta l_househ l_8
+1 1 eta l_furnit 999.000
+91 1 eta l_furnit l_9
+1 1 eta l_people 999.000
+91 1 eta l_people l_10
+1 1 eta l_gamesr 999.000
+91 1 eta l_gamesr l_11
+1 1 eta l_action 999.000
+91 1 eta l_action l_12
+1 1 eta l_descw 999.000
+91 1 eta l_descw l_13
+1 1 eta s_pron 999.000
+91 1 eta s_pron l_14
+1 1 eta s_qwords 999.000
+91 1 eta s_qwords l_15
+1 1 eta l_locate 999.000
+91 1 eta l_locate l_16
+1 1 eta s_quant 999.000
+91 1 eta s_quant l_17
+1 1 eta s_helpv 999.000
+91 1 eta s_helpv l_18
+1 1 eta s_conctw 999.000
+91 1 eta s_conctw l_19
+1 1 age_e eta 0.063
+1 1 data_bcp eta -0.115
+1 1 data_eir eta 0.027
+1 1 d_male eta 0.027
+1 1 d_momcol eta 0.024
+1 1 d_male l_sounds -0.056
+1 1 d_momcol l_sounds 0.025
+1 1 data_bcp l_sounds -0.335
+1 1 data_eir l_sounds 0.092
+1 1 d_male l_animal -0.055
+1 1 d_momcol l_animal 0.008
+1 1 data_bcp l_animal -0.025
+1 1 data_eir l_animal -0.021
+1 1 d_male l_vehicl -0.034
+1 1 d_momcol l_vehicl 0.013
+1 1 data_bcp l_vehicl 0.023
+1 1 data_eir l_vehicl -0.016
+1 1 d_male l_toys -0.055
+1 1 d_momcol l_toys 0.002
+1 1 data_bcp l_toys -0.012
+1 1 data_eir l_toys -0.008
+1 1 d_male l_foodd -0.048
+1 1 d_momcol l_foodd 0.005
+1 1 data_bcp l_foodd -0.027
+1 1 data_eir l_foodd -0.032
+1 1 d_male l_cloth -0.032
+1 1 d_momcol l_cloth 0.0005640953896
+1 1 data_bcp l_cloth -0.057
+1 1 data_eir l_cloth -0.039
+1 1 d_male l_bodyp -0.072
+1 1 d_momcol l_bodyp 0.013
+1 1 data_bcp l_bodyp -0.075
+1 1 data_eir l_bodyp 0.002
+1 1 d_male l_househ -0.050
+1 1 d_momcol l_househ -0.005
+1 1 data_bcp l_househ -0.006
+1 1 data_eir l_househ -0.037
+1 1 d_male l_furnit -0.044
+1 1 d_momcol l_furnit -0.008
+1 1 data_bcp l_furnit -0.028
+1 1 data_eir l_furnit -0.058
+1 1 d_male l_people -0.046
+1 1 data_bcp l_people -0.061
+1 1 data_eir l_people -0.027
+1 1 d_male l_gamesr -0.071
+1 1 d_momcol l_gamesr 0.007
+1 1 data_bcp l_gamesr -0.087
+1 1 data_eir l_gamesr 0.011
+1 1 d_male l_action -0.042
+1 1 d_momcol l_action -0.009
+1 1 data_bcp l_action 0.021
+1 1 data_eir l_action -0.072
+1 1 d_male l_descw -0.037
+1 1 d_momcol l_descw -0.006
+1 1 data_bcp l_descw -0.020
+1 1 data_eir l_descw -0.072
+1 1 d_male s_pron -0.018
+1 1 d_momcol s_pron -0.013
+1 1 data_bcp s_pron -0.043
+1 1 data_eir s_pron -0.076
+1 1 d_male s_qwords -0.021
+1 1 d_momcol s_qwords -0.012
+1 1 data_bcp s_qwords -0.064
+1 1 data_eir s_qwords -0.075
+1 1 d_male l_locate -0.025
+1 1 data_bcp l_locate -0.047
+1 1 data_eir l_locate -0.069
+1 1 d_male s_quant -0.014
+1 1 d_momcol s_quant -0.023
+1 1 data_bcp s_quant -0.032
+1 1 data_eir s_quant -0.085
+1 1 d_male s_helpv -0.006
+1 1 d_momcol s_helpv -0.007
+1 1 data_bcp s_helpv -0.027
+1 1 data_eir s_helpv -0.108
+1 1 d_male s_conctw -0.005
+1 1 d_momcol s_conctw -0.011
+1 1 data_bcp s_conctw -0.050
+1 1 data_eir s_conctw -0.116
+4 1 l_sounds 0.043
+4 1 l_animal 0.011
+4 1 l_vehicl 0.013
+4 1 l_toys 0.008
+4 1 l_foodd 0.004
+4 1 l_cloth 0.005
+4 1 l_bodyp 0.014
+4 1 l_househ 0.004
+4 1 l_furnit 0.006
+4 1 l_people 0.008
+4 1 l_gamesr 0.012
+4 1 l_action 0.008
+4 1 l_descw 0.007
+4 1 s_pron 0.018
+4 1 s_qwords 0.027
+4 1 l_locate 0.012
+4 1 s_quant 0.018
+4 1 s_helpv 0.023
+4 1 s_conctw 0.032
+4 1 eta 999.000
+94 1 eta veta
+2 1 d_male d_momcol 999.000
+2 1 d_male data_bcp 999.000
+2 1 d_male data_eir 999.000
+2 1 d_male age_e 999.000
+2 1 d_momcol data_bcp 999.000
+2 1 d_momcol data_eir 999.000
+2 1 d_momcol age_e 999.000
+2 1 data_bcp data_eir 999.000
+2 1 data_bcp age_e 999.000
+2 1 data_eir age_e 999.000

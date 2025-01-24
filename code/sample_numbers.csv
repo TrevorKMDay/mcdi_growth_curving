@@ -1,0 +1,7 @@
+dataset,n,insufficient,backup,good
+BCP,3,15,9,40
+BCP,4,10,6,60
+BCP,5,NA,2,8
+EIRLI,3,6,5,69
+EIRLI,4,5,4,99
+EIRLI,5,NA,2,306

@@ -1,0 +1,18 @@
+# This CITATION.cff file was generated with cffinit.
+# Visit https://bit.ly/cffinit to generate yours today!
+
+cff-version: 1.2.0
+title: mcdi_growth_curving
+message: Code for applying Gompertz growth curves to CDI data.
+type: software
+authors:
+  - given-names: Trevor
+    family-names: Day
+    email: trevor.day@georgetown.edu
+    affiliation: Georgetown University
+    orcid: 'https://orcid.org/0000-0003-2911-8312'
+identifiers:
+  - type: doi
+    value: 10.31234/osf.io/rwhcy
+    description: 'Day et al. (2024) [preprint]'
+license: CC-BY-4.0
